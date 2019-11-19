@@ -7,6 +7,7 @@ There are multiple implementations available that can be enabled to discover iss
 
 [![GoDoc](https://godoc.org/github.com/markus-wa/go-unassert?status.svg)](https://godoc.org/github.com/markus-wa/go-unassert)
 [![Build Status](https://travis-ci.com/markus-wa/go-unassert.svg?branch=master)](https://travis-ci.com/markus-wa/go-unassert)
+[![codecov](https://codecov.io/gh/markus-wa/go-unassert/branch/master/graph/badge.svg)](https://codecov.io/gh/markus-wa/go-unassert)
 [![Go Report](https://goreportcard.com/badge/github.com/markus-wa/go-unassert)](https://goreportcard.com/report/github.com/markus-wa/go-unassert)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE.md)
 
