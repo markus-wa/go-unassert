@@ -3,9 +3,10 @@
 unassert is a library that provides assertions based on the provided [build tags](https://www.digitalocean.com/community/tutorials/customizing-go-binaries-with-build-tags).
 
 By default assertions are disabled (NOP implementation) to provide the best possible performance.
-There are multiple implementations available that can be enabled to discover issues in automated test runs or on QA environments.
+There are multiple implementations available that can be enabled to discover issues in automated test runs or in QA environments.
 
 [![GoDoc](https://godoc.org/github.com/markus-wa/go-unassert?status.svg)](https://godoc.org/github.com/markus-wa/go-unassert)
+[![Build Status](https://travis-ci.com/markus-wa/go-unassert.svg?branch=master)](https://travis-ci.com/markus-wa/go-unassert)
 [![Go Report](https://goreportcard.com/badge/github.com/markus-wa/go-unassert)](https://goreportcard.com/report/github.com/markus-wa/go-unassert)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE.md)
 
