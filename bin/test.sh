@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+go test -cover -v ./...
+
+go test -cover -v -tags unassert_panic ./...
+
+go test -cover -v -tags unassert_stderr ./...
