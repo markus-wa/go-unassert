@@ -6,6 +6,7 @@ By default assertions are disabled (NOP implementation) to provide the best poss
 There are multiple implementations available that can be enabled to discover issues in automated test runs or on QA environments.
 
 [![GoDoc](https://godoc.org/github.com/markus-wa/go-unassert?status.svg)](https://godoc.org/github.com/markus-wa/go-unassert)
+[![Go Report](https://goreportcard.com/badge/github.com/markus-wa/go-unassert)](https://goreportcard.com/report/github.com/markus-wa/go-unassert)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE.md)
 
 ## Go Get
