@@ -8,7 +8,7 @@ func Same(a interface{}, b interface{}) {
 	// NOP
 }
 
-// Same checks if b is true.
+// True checks if b is true.
 // Behaves according to 'unassert_' build tags.
 func True(b bool) {
 	// NOP
