@@ -21,19 +21,23 @@ There are multiple implementations available that can be enabled to discover iss
 package main
 
 import (
-    "fmt"
+	"fmt"
 
-    "github.com/markus-wa/go-unassert"
+	"github.com/markus-wa/go-unassert"
 )
 
 func main() {
-    unassert.True(true)
+	unassert.True(true)
 
-    fmt.Println("Hello")
+	fmt.Println("Hello")
 
-    unassert.Same("a", "b")
+	unassert.Same("a", "b")
 
-    fmt.Println("World")
+	fmt.Println("World")
+
+	unassert.Error("you can also %s a string", "format")
+	unassert.Nilf(new(struct{}), "you can also pass error messages to any other function")
+	unassert.NotNilf(nil, "with or without %s", "formatting")
 }
 ```
 
