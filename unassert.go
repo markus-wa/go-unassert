@@ -1,3 +1,6 @@
+// Package unassert provides assertions based on the provided build tags.
+// Using -tags unassert_panics panics if an assertion fails.
+// Using -tags unassert_stderr prints an error to stdout if an assertion fails.
 package unassert
 
 // ErrorHandler handles an error.
