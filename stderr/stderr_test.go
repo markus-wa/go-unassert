@@ -10,7 +10,7 @@ import (
 func TestStderr(t *testing.T) {
 	assertStderr(t, func() {
 		Stderr("format %s args", "with")
-	}, "format with args")
+	}, "UNASSERT: format with args")
 }
 
 // assertStderr redirects standard output to the stderr variable for tests.

@@ -12,7 +12,7 @@ func TestPanic(t *testing.T) {
 	defer func() {
 		err := recover()
 
-		assert.Equal(t, "format with args", err)
+		assert.Equal(t, "UNASSERT: format with args", err)
 	}()
 
 	dopanic.Panic("format %s args", "with")
