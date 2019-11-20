@@ -10,6 +10,7 @@ There are multiple implementations available that can be enabled to discover iss
 [![codecov](https://codecov.io/gh/markus-wa/go-unassert/branch/master/graph/badge.svg)](https://codecov.io/gh/markus-wa/go-unassert)
 [![Go Report](https://goreportcard.com/badge/github.com/markus-wa/go-unassert)](https://goreportcard.com/report/github.com/markus-wa/go-unassert)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE.md)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmarkus-wa%2Fgo-unassert.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmarkus-wa%2Fgo-unassert?ref=badge_shield)
 
 ## Go Get
 
@@ -111,3 +112,7 @@ github.com/markus-wa/go-unassert.NotNilf(...)
 main.main()
     C:/Users/mwalt/dev/go-unassert/example/example.go:20 +0x200
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmarkus-wa%2Fgo-unassert.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmarkus-wa%2Fgo-unassert?ref=badge_large)
