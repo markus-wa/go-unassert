@@ -7,5 +7,5 @@ import (
 
 // Panic formats an error and panics.
 func Panic(format string, v ...interface{}) {
-	panic(fmt.Sprintf(format, v...))
+	panic("UNASSERT: " + fmt.Sprintf(format, v...))
 }

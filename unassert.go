@@ -15,7 +15,7 @@ func Error(format string, v ...interface{}) {
 		return
 	}
 
-	errorHandler(format, v)
+	errorHandler(format, v...)
 }
 
 // Same checks if a == b.
@@ -41,7 +41,7 @@ func Samef(a interface{}, b interface{}, format string, v ...interface{}) {
 	}
 
 	if a != b {
-		errorHandler(format, v)
+		errorHandler(format, v...)
 	}
 }
 
@@ -68,7 +68,7 @@ func Truef(b bool, format string, v ...interface{}) {
 	}
 
 	if !b {
-		errorHandler(format, v)
+		errorHandler(format, v...)
 	}
 }
 
@@ -95,7 +95,7 @@ func Nilf(o interface{}, format string, v ...interface{}) {
 	}
 
 	if o != nil {
-		errorHandler(format, v)
+		errorHandler(format, v...)
 	}
 }
 
@@ -122,6 +122,6 @@ func NotNilf(o interface{}, format string, v ...interface{}) {
 	}
 
 	if o == nil {
-		errorHandler(format, v)
+		errorHandler(format, v...)
 	}
 }
