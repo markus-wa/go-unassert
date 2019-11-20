@@ -115,4 +115,7 @@ main.main()
 
 
 ## License
+
+This project is licensed under the [MIT license](LICENSE.md).
+
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmarkus-wa%2Fgo-unassert.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmarkus-wa%2Fgo-unassert?ref=badge_large)
