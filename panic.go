@@ -3,17 +3,9 @@
 package unassert
 
 import (
-	"fmt"
+	"github.com/markus-wa/go-unassert/dopanic"
 )
 
-func Same(a interface{}, b interface{}) {
-	if a != b {
-		panic(fmt.Sprintf("assertion failed: %v != %v", a, b))
-	}
-}
+const enabled = true
 
-func True(b bool) {
-	if !b {
-		panic("assertion failed: value is not true")
-	}
-}
+var errorHandler = dopanic.Panic

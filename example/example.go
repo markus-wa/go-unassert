@@ -14,4 +14,8 @@ func main() {
 	unassert.Same("a", "b")
 
 	fmt.Println("World")
+
+	unassert.Error("You can also %s a string", "format")
+	unassert.Nilf(new(struct{}), "you can also pass error messages to any other function")
+	unassert.NotNilf(nil, "with or without %s", "formatting")
 }

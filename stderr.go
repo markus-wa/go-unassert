@@ -3,24 +3,9 @@
 package unassert
 
 import (
-	"fmt"
-	"io"
-	"os"
-	"runtime/debug"
+	"github.com/markus-wa/go-unassert/stderr"
 )
 
-var stderr io.Writer = os.Stderr
+const enabled = true
 
-func Same(a interface{}, b interface{}) {
-	if a != b {
-		fmt.Fprintf(stderr, "assertion failed: %v != %v\n", a, b)
-		stderr.Write(debug.Stack())
-	}
-}
-
-func True(b bool) {
-	if !b {
-		fmt.Fprintln(stderr, "assertion failed: value is not true")
-		stderr.Write(debug.Stack())
-	}
-}
+var errorHandler = stderr.Stderr

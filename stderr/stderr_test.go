@@ -1,6 +1,4 @@
-// +build unassert_stderr
-
-package unassert
+package stderr
 
 import (
 	"bytes"
@@ -9,28 +7,10 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestSame(t *testing.T) {
+func TestStderr(t *testing.T) {
 	assertStderr(t, func() {
-		Same(1, 1)
-	}, "")
-}
-
-func TestSame_Stderr(t *testing.T) {
-	assertStderr(t, func() {
-		Same(1, 2)
-	}, "assertion failed: 1 != 2")
-}
-
-func TestTrue(t *testing.T) {
-	assertStderr(t, func() {
-		True(true)
-	}, "")
-}
-
-func TestTrue_Stderr(t *testing.T) {
-	assertStderr(t, func() {
-		True(false)
-	}, "assertion failed: value is not true")
+		Stderr("format %s args", "with")
+	}, "format with args")
 }
 
 // assertStderr redirects standard output to the stderr variable for tests.
