@@ -16,6 +16,7 @@ func Stderr(format string, v ...interface{}) {
 	if err != nil {
 		fmt.Println("failed to write assertion error to stderr:", err)
 	}
+
 	_, err = stderr.Write(debug.Stack())
 	if err != nil {
 		fmt.Println("failed to write stack to stderr:", err)
