@@ -18,33 +18,6 @@ func Error(format string, v ...interface{}) {
 	errorHandler(format, v...)
 }
 
-// Same checks if a == b.
-// Behaves according to 'unassert_' build tags.
-func Same(a interface{}, b interface{}) {
-	if !enabled {
-		// NOP
-		return
-	}
-
-	if a != b {
-		errorHandler("assertion failed: %v != %v", a, b)
-	}
-}
-
-// Samef checks if a == b.
-// Behaves according to 'unassert_' build tags.
-// Formats according to a format specifier.
-func Samef(a interface{}, b interface{}, format string, v ...interface{}) {
-	if !enabled {
-		// NOP
-		return
-	}
-
-	if a != b {
-		errorHandler(format, v...)
-	}
-}
-
 // True checks if b is true.
 // Behaves according to 'unassert_' build tags.
 func True(b bool) {
@@ -53,9 +26,7 @@ func True(b bool) {
 		return
 	}
 
-	if !b {
-		errorHandler("assertion failed: value is not true")
-	}
+	Truef(b, "assertion failed: value is not true")
 }
 
 // Truef checks if b is true.
@@ -68,7 +39,32 @@ func Truef(b bool, format string, v ...interface{}) {
 	}
 
 	if !b {
-		errorHandler(format, v...)
+		Error(format, v...)
+	}
+}
+
+// False checks if b is false.
+// Behaves according to 'unassert_' build tags.
+func False(b bool) {
+	if !enabled {
+		// NOP
+		return
+	}
+
+	Falsef(b, "assertion failed: value is not false")
+}
+
+// Falsef checks if b is false.
+// Behaves according to 'unassert_' build tags.
+// Formats according to a format specifier.
+func Falsef(b bool, format string, v ...interface{}) {
+	if !enabled {
+		// NOP
+		return
+	}
+
+	if b {
+		Error(format, v...)
 	}
 }
 
@@ -80,9 +76,7 @@ func Nil(o interface{}) {
 		return
 	}
 
-	if o != nil {
-		errorHandler("assertion failed: value is not nil")
-	}
+	Nilf(o, "assertion failed: value is not nil")
 }
 
 // Nilf checks if v is nil.
@@ -95,7 +89,7 @@ func Nilf(o interface{}, format string, v ...interface{}) {
 	}
 
 	if o != nil {
-		errorHandler(format, v...)
+		Error(format, v...)
 	}
 }
 
@@ -107,9 +101,7 @@ func NotNil(o interface{}) {
 		return
 	}
 
-	if o == nil {
-		errorHandler("assertion failed: value is nil")
-	}
+	NotNilf(o, "assertion failed: value is nil")
 }
 
 // NotNilf checks if v is not nil.
@@ -122,6 +114,56 @@ func NotNilf(o interface{}, format string, v ...interface{}) {
 	}
 
 	if o == nil {
-		errorHandler(format, v...)
+		Error(format, v...)
+	}
+}
+
+// Same checks if a == b.
+// Behaves according to 'unassert_' build tags.
+func Same(a interface{}, b interface{}) {
+	if !enabled {
+		// NOP
+		return
+	}
+
+	Samef(a, b, "assertion failed: %v != %v", a, b)
+}
+
+// Samef checks if a == b.
+// Behaves according to 'unassert_' build tags.
+// Formats according to a format specifier.
+func Samef(a interface{}, b interface{}, format string, v ...interface{}) {
+	if !enabled {
+		// NOP
+		return
+	}
+
+	if a != b {
+		Error(format, v...)
+	}
+}
+
+// NotSame checks if a != b.
+// Behaves according to 'unassert_' build tags.
+func NotSame(a interface{}, b interface{}) {
+	if !enabled {
+		// NOP
+		return
+	}
+
+	NotSamef(a, b, "assertion failed: %v == %v", a, b)
+}
+
+// NotSamef checks if a != b.
+// Behaves according to 'unassert_' build tags.
+// Formats according to a format specifier.
+func NotSamef(a interface{}, b interface{}, format string, v ...interface{}) {
+	if !enabled {
+		// NOP
+		return
+	}
+
+	if a == b {
+		Error(format, v...)
 	}
 }

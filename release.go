@@ -1,4 +1,4 @@
-// +build !unassert_stderr,!unassert_panic
+// +build !unassert_stderr,!unassert_panic,!unassert_test
 
 package unassert
 
