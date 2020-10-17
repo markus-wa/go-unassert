@@ -29,7 +29,7 @@ func TestTrue_False(t *testing.T) {
 
 	True(false)
 
-	assertLastError(t, "assertion failed: value is not true")
+	assertLastError(t, "assertion failed: expected true, got false")
 }
 
 func TestFalse_False(t *testing.T) {
@@ -45,7 +45,7 @@ func TestFalse_True(t *testing.T) {
 
 	False(true)
 
-	assertLastError(t, "assertion failed: value is not false")
+	assertLastError(t, "assertion failed: expected false, got true")
 }
 
 func TestNil_Nil(t *testing.T) {
@@ -59,9 +59,10 @@ func TestNil_Nil(t *testing.T) {
 func TestNil_NotNil(t *testing.T) {
 	lastError = errorArgs{}
 
-	Nil(&struct{}{})
+	v := &struct{}{}
+	Nil(v)
 
-	assertLastError(t, "assertion failed: value is not nil")
+	assertLastError(t, "assertion failed: expected nil, got %v", v)
 }
 
 func TestNotNil_NotNil(t *testing.T) {
@@ -77,7 +78,7 @@ func TestNotNil_Nil(t *testing.T) {
 
 	NotNil(nil)
 
-	assertLastError(t, "assertion failed: value is nil")
+	assertLastError(t, "assertion failed: expected non-nil, got nil")
 }
 
 func TestSame_Same(t *testing.T) {
@@ -93,7 +94,7 @@ func TestSame_NotSame(t *testing.T) {
 
 	Same("a", "b")
 
-	assertLastError(t, "assertion failed: %v != %v", "a", "b")
+	assertLastError(t, "assertion failed: expected same values, got %v != %v", "a", "b")
 }
 
 func TestNotSame_Same(t *testing.T) {
@@ -109,7 +110,7 @@ func TestNotSame_NotSame(t *testing.T) {
 
 	NotSame("a", "a")
 
-	assertLastError(t, "assertion failed: %v == %v", "a", "a")
+	assertLastError(t, "assertion failed: expected two different values, got %v", "a", "a")
 }
 
 func assertLastError(t *testing.T, format string, v ...interface{}) {

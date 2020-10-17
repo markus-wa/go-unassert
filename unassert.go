@@ -26,7 +26,7 @@ func True(b bool) {
 		return
 	}
 
-	Truef(b, "assertion failed: value is not true")
+	Truef(b, "assertion failed: expected true, got false")
 }
 
 // Truef checks if b is true.
@@ -51,7 +51,7 @@ func False(b bool) {
 		return
 	}
 
-	Falsef(b, "assertion failed: value is not false")
+	Falsef(b, "assertion failed: expected false, got true")
 }
 
 // Falsef checks if b is false.
@@ -76,7 +76,7 @@ func Nil(o interface{}) {
 		return
 	}
 
-	Nilf(o, "assertion failed: value is not nil")
+	Nilf(o, "assertion failed: expected nil, got %v", o)
 }
 
 // Nilf checks if v is nil.
@@ -101,7 +101,7 @@ func NotNil(o interface{}) {
 		return
 	}
 
-	NotNilf(o, "assertion failed: value is nil")
+	NotNilf(o, "assertion failed: expected non-nil, got nil")
 }
 
 // NotNilf checks if v is not nil.
@@ -126,7 +126,7 @@ func Same(a interface{}, b interface{}) {
 		return
 	}
 
-	Samef(a, b, "assertion failed: %v != %v", a, b)
+	Samef(a, b, "assertion failed: expected same values, got %v != %v", a, b)
 }
 
 // Samef checks if a == b.
@@ -151,7 +151,7 @@ func NotSame(a interface{}, b interface{}) {
 		return
 	}
 
-	NotSamef(a, b, "assertion failed: %v == %v", a, b)
+	NotSamef(a, b, "assertion failed: expected two different values, got %v", a, b)
 }
 
 // NotSamef checks if a != b.

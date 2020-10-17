@@ -12,7 +12,7 @@ func TestExample(t *testing.T) {
 	defer func() {
 		err := recover()
 
-		assert.Equal(t, "UNASSERT: assertion failed: a != b", err)
+		assert.Equal(t, "UNASSERT: assertion failed: expected same values, got a != b", err)
 	}()
 
 	main()
