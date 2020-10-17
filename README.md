@@ -75,7 +75,7 @@ output:
 
 ```
 Hello
-panic: UNASSERT: assertion failed: a != b
+panic: UNASSERT: assertion failed: expected same values, got a != b
 
 goroutine 1 [running]:
 github.com/markus-wa/go-unassert.Same(...)
@@ -171,7 +171,6 @@ github.com/markus-wa/go-unassert.ReturnsTrue(...)
 main.main()
     /home/mark/dev/go-unassert/example/example.go:31 +0x35e
 ```
-
 
 ## License
 
