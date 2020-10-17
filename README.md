@@ -1,8 +1,11 @@
 # unassert - providing a lack of  assertions
 
-unassert is a library that provides assertions based on the provided [build tags](https://www.digitalocean.com/community/tutorials/customizing-go-binaries-with-build-tags).
+unassert is a library that provides assertions based on the provided [build tags](https://www.digitalocean.com/community/tutorials/customizing-go-binaries-with-build-tags) - `unassert_panic` or `unassert_stderr`.
 
-By default assertions are disabled (NOP implementation) to provide the best possible performance.
+By default assertions are disabled (NOP implementation) to provide zero overhead in performance.
+The Go compiler detects when the library is not enbled and completely removes any function calls to `unassert`, so it behaves as if it the library were not used at all.
+This can be very useful if you are in a high performance scenario where you want to do assertinons in tight loops and you are reasonably sure your test cases cover any realistic scenarios.
+
 There are multiple implementations available that can be enabled to discover issues in automated test runs or in QA environments.
 
 [![GoDoc](https://godoc.org/github.com/markus-wa/go-unassert?status.svg)](https://godoc.org/github.com/markus-wa/go-unassert)
