@@ -167,3 +167,69 @@ func NotSamef(a interface{}, b interface{}, format string, v ...interface{}) {
 		Error(format, v...)
 	}
 }
+
+// Predicate is a function type used for lazy evaluation in assertions.
+// It takes one argument and returns true if that argument matches a given predicate.
+// See Matches().
+type Predicate func(interface{}) bool
+
+// Matches checks if predicate(v) is true.
+// Useful for lazy evaluation of complex assertions.
+// Behaves according to 'unassert_' build tags.
+// Formats according to a format specifier.
+func Matches(predicate Predicate, x interface{}) {
+	if !enabled {
+		// NOP
+		return
+	}
+
+	Matchesf(predicate, x, "assertion failed: predicate(x) did not return true; x = %v", x)
+}
+
+// Matchesf checks if predicate(v) is true.
+// Useful for lazy evaluation of complex assertions.
+// Behaves according to 'unassert_' build tags.
+// Formats according to a format specifier.
+func Matchesf(predicate Predicate, x interface{}, format string, v ...interface{}) {
+	if !enabled {
+		// NOP
+		return
+	}
+
+	if !predicate(x) {
+		Error(format, v...)
+	}
+}
+
+// Evaluator is a function type used for lazy evaluation in assertions.
+// Mostly used for function closures.
+// See ReturnsTrue().
+type Evaluator func() bool
+
+// ReturnsTrue checks if evaluator() returns true.
+// Useful for lazy evaluation of complex assertions.
+// Behaves according to 'unassert_' build tags.
+// Formats according to a format specifier.
+func ReturnsTrue(evaluator Evaluator) {
+	if !enabled {
+		// NOP
+		return
+	}
+
+	ReturnsTruef(evaluator, "assertion failed: evaluator() did not return true")
+}
+
+// ReturnsTrue checks if evaluator() returns true.
+// Useful for lazy evaluation of complex assertions.
+// Behaves according to 'unassert_' build tags.
+// Formats according to a format specifier.
+func ReturnsTruef(evaluator Evaluator, format string, v ...interface{}) {
+	if !enabled {
+		// NOP
+		return
+	}
+
+	if !evaluator() {
+		Error(format, v...)
+	}
+}

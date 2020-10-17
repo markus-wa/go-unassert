@@ -113,6 +113,38 @@ func TestNotSame_NotSame(t *testing.T) {
 	assertLastError(t, "assertion failed: expected two different values, got %v", "a", "a")
 }
 
+func TestMatches_True(t *testing.T) {
+	lastError = errorArgs{}
+
+	Matches(func(x interface{}) bool { return x == "a" }, "a")
+
+	assertLastErrorEmpty(t)
+}
+
+func TestMatches_False(t *testing.T) {
+	lastError = errorArgs{}
+
+	Matches(func(x interface{}) bool { return x == "a" }, "b")
+
+	assertLastError(t, "assertion failed: predicate(x) did not return true; x = %v", "b")
+}
+
+func TestReturnsTrue_True(t *testing.T) {
+	lastError = errorArgs{}
+
+	ReturnsTrue(func() bool { return true })
+
+	assertLastErrorEmpty(t)
+}
+
+func TestReturnsTrue_False(t *testing.T) {
+	lastError = errorArgs{}
+
+	ReturnsTrue(func() bool { return false })
+
+	assertLastError(t, "assertion failed: evaluator() did not return true")
+}
+
 func assertLastError(t *testing.T, format string, v ...interface{}) {
 	assert.Equal(t, format, lastError.format)
 	assert.Equal(t, v, lastError.v)

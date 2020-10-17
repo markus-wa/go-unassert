@@ -57,3 +57,19 @@ func TestNotSame_NOP(t *testing.T) {
 func TestNotSamef_NOP(t *testing.T) {
 	NotSamef("a", "a", "NotSamef")
 }
+
+func TestMatches_NOP(t *testing.T) {
+	Matches(nil, nil)
+}
+
+func TestMatchesf_NOP(t *testing.T) {
+	Matchesf(nil, nil, "Matchesf")
+}
+
+func TestReturnsTrue_NOP(t *testing.T) {
+	ReturnsTrue(nil)
+}
+
+func TestReturnsTruef_NOP(t *testing.T) {
+	ReturnsTruef(nil, "ReturnsTruef")
+}
