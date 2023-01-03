@@ -3,8 +3,6 @@ package stderr
 import (
 	"bytes"
 	"testing"
-
-	"github.com/stretchr/testify/assert"
 )
 
 func TestStderr(t *testing.T) {
@@ -21,7 +19,9 @@ func assertStderr(t *testing.T, f func(), expected string) {
 
 	f()
 
-	assert.Equal(t, expected, stderr.(*bytes.Buffer).String()[0:len(expected)])
+	if expected != stderr.(*bytes.Buffer).String()[0:len(expected)] {
+		t.Errorf("expected %q, got %q", expected, stderr.(*bytes.Buffer).String())
+	}
 
 	stderr = old
 }
