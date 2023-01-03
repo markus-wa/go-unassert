@@ -1,11 +1,11 @@
+//go:build unassert_test
 // +build unassert_test
 
 package unassert
 
 import (
+	"reflect"
 	"testing"
-
-	"github.com/stretchr/testify/assert"
 )
 
 func TestError(t *testing.T) {
@@ -146,11 +146,21 @@ func TestReturnsTrue_False(t *testing.T) {
 }
 
 func assertLastError(t *testing.T, format string, v ...interface{}) {
-	assert.Equal(t, format, lastError.format)
-	assert.Equal(t, v, lastError.v)
+	if format != lastError.format {
+		t.Errorf("expected format %q, got %q", format, lastError.format)
+	}
+
+	if !reflect.DeepEqual(v, lastError.v) {
+		t.Errorf("expected error %q, got %q", format, lastError.format)
+	}
 }
 
 func assertLastErrorEmpty(t *testing.T) {
-	assert.Empty(t, lastError.format)
-	assert.Nil(t, lastError.v)
+	if lastError.format != "" {
+		t.Errorf("expected no error, got %q", lastError.format)
+	}
+
+	if lastError.v != nil {
+		t.Errorf("expected no error args, got %q", lastError.v)
+	}
 }

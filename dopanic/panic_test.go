@@ -3,8 +3,6 @@ package dopanic_test
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-
 	"github.com/markus-wa/go-unassert/dopanic"
 )
 
@@ -12,7 +10,11 @@ func TestPanic(t *testing.T) {
 	defer func() {
 		err := recover()
 
-		assert.Equal(t, "UNASSERT: format with args", err)
+		const expected = "UNASSERT: format with args"
+
+		if err != expected {
+			t.Errorf("expected %q, got %q", expected, err)
+		}
 	}()
 
 	dopanic.Panic("format %s args", "with")
